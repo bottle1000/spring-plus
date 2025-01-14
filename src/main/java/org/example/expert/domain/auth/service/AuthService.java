@@ -1,5 +1,6 @@
 package org.example.expert.domain.auth.service;
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.example.expert.config.JwtUtil;
 import org.example.expert.config.PasswordEncoder;
@@ -38,11 +39,12 @@ public class AuthService {
         User newUser = new User(
                 signupRequest.getEmail(),
                 encodedPassword,
+                signupRequest.getNickname(),
                 userRole
         );
         User savedUser = userRepository.save(newUser);
 
-        String bearerToken = jwtUtil.createToken(savedUser.getId(), savedUser.getEmail(), userRole);
+        String bearerToken = jwtUtil.createToken(savedUser.getId(), savedUser.getEmail(), savedUser.getNickname(), userRole);
 
         return new SignupResponse(bearerToken);
     }
@@ -56,8 +58,8 @@ public class AuthService {
             throw new AuthException("잘못된 비밀번호입니다.");
         }
 
-        String bearerToken = jwtUtil.createToken(user.getId(), user.getEmail(), user.getUserRole());
+        String bearerToken = jwtUtil.createToken(user.getId(), user.getEmail(), user.getNickname(), user.getUserRole());
 
-        return new SigninResponse(bearerToken);
+        return new SigninResponse(bearerToken, user.getNickname());
     }
 }
