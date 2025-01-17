@@ -1,9 +1,6 @@
-package org.example.expert.domain.user.repository;
+package org.example.expert.domain.todo.repository;
 
-import com.querydsl.core.QueryResults;
-import com.querydsl.core.types.ExpressionUtils;
 import com.querydsl.core.types.Projections;
-import com.querydsl.jpa.JPAExpressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
 import org.example.expert.domain.comment.entity.QComment;
@@ -22,11 +19,11 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 import java.util.Optional;
 
-public class UserRepositoryCustomImpl implements UserRepositoryCustom{
+public class TodoRepositoryCustomImpl implements TodoRepositoryCustom {
 
     private final JPAQueryFactory queryFactory;
 
-    public UserRepositoryCustomImpl(EntityManager em) {
+    public TodoRepositoryCustomImpl(EntityManager em) {
         this.queryFactory = new JPAQueryFactory(em);
     }
 

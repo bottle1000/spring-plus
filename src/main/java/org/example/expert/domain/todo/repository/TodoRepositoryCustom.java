@@ -1,4 +1,4 @@
-package org.example.expert.domain.user.repository;
+package org.example.expert.domain.todo.repository;
 
 import org.example.expert.domain.todo.dto.request.TodoSearchRequest;
 import org.example.expert.domain.todo.dto.response.TodoResponse;
@@ -9,7 +9,7 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.Optional;
 
-public interface UserRepositoryCustom {
+public interface TodoRepositoryCustom {
     Optional<Todo> findByIdWithUser(Long todoId);
     Optional<TodoResponse> findTodoDtoByIdWithUser(Long todoId);
 
