@@ -59,7 +59,7 @@ public class ManagerService {
 
             return new ManagerSaveResponse(
                     savedManagerUser.getId(),
-                    new UserResponse(managerUser.getId(), managerUser.getEmail()));
+                    new UserResponse(managerUser.getNickname(), managerUser.getEmail()));
         } catch (Exception e) {
             logService.saveManagerLog(authUser, e);
             throw e;
@@ -77,7 +77,7 @@ public class ManagerService {
             User user = manager.getUser();
             dtoList.add(new ManagerResponse(
                     manager.getId(),
-                    new UserResponse(user.getId(), user.getEmail())
+                    new UserResponse(user.getNickname(), user.getEmail())
             ));
         }
         return dtoList;
