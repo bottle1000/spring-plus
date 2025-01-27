@@ -5,11 +5,14 @@ import lombok.Getter;
 @Getter
 public class UserResponse {
 
-    private final Long id;
+    /**
+     * CustomUserDetail 맞추려해서 지워줬습니다.
+     */
+    private final String nickname;
     private final String email;
 
-    public UserResponse(Long id, String email) {
-        this.id = id;
+    public UserResponse(String nickname, String email) {
+        this.nickname = nickname;
         this.email = email;
     }
 }
